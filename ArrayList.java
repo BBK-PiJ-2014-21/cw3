@@ -22,8 +22,17 @@ public class ArrayList implements List {
 		}
 	}
 
-	public ReturnObject get(int index) {		// TO BE IMPLEMENTED
-		return null;
+	public ReturnObject get(int index) {
+		if(isEmpty()) {
+			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.EMPTY_STRUCTURE);
+			return wrap;
+		} else if(index<0 || index>size()-1) {
+			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			return wrap;
+		} else {
+			ReturnObject wrap = new ReturnObjectImpl(list[index], ErrorMessage.NO_ERROR);
+			return wrap;
+		}
 	}
 	
 	public ReturnObject remove(int index) {		// TO BE IMPLEMENTED
