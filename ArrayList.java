@@ -47,12 +47,51 @@ public class ArrayList implements List {
 		}
 	}
 	
-	public ReturnObject add(int index, Object item) {		// TO BE IMPLEMENTED
-		return null;
+	public ReturnObject add(int index, Object item) {		// TO BE TESTED
+		if(item==null) {
+			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INVALID_ARGUMENT);
+			return wrap;
+		} else {
+			ReturnObject wrap = get(index);
+			if(wrap.hasError()) {
+				return wrap;
+			} else {
+				wrap = new ReturnObjectImpl(item, ErrorMessage.NO_ERROR);
+				ArrayList temp = new ArrayList();
+				temp.list = new Object[this.size()+1];
+				temp.list[index] = item;
+				for(int i=0; i<index; i++) {
+					temp.list[i] = this.list[i];
+				}
+				for(int i=index+1; i<temp.size(); i++) {
+					temp.list[i] = this.list[i-1];
+				}
+				this.list = temp.list;
+				return wrap;
+			}
+		}
 	}
 	
-	public ReturnObject add(Object item) {		// TO BE IMPLEMENTED
-		return null;
+	public ReturnObject add(Object item) {		// TO BE TESTED
+		if(item==null) {
+			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INVALID_ARGUMENT);
+			return wrap;
+		} else {
+			ReturnObject wrap = new ReturnObjectImpl(item, ErrorMessage.NO_ERROR);
+			if(isEmpty()) {
+				list = new Object[1];
+				list[1] = item;
+			} else {
+				ArrayList temp = new ArrayList();
+				temp.list = new Object[this.size()+1];
+				temp.list[temp.size()-1] = item;
+				for(int i=0; i<this.size(); i++) {
+					temp.list[i] = this.list[i];
+				}
+				this.list = temp.list;
+			}
+			return wrap;
+		}
 	}
 	
 }
