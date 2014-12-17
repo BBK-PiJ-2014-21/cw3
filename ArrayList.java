@@ -35,8 +35,16 @@ public class ArrayList implements List {
 		}
 	}
 	
-	public ReturnObject remove(int index) {		// TO BE IMPLEMENTED
-		return null;
+	public ReturnObject remove(int index) {
+		ReturnObject wrap = get(index);
+		if(wrap.hasError()) {
+			return wrap;
+		} else if(size()==1) {
+			list = null;
+			return wrap;
+		} else {
+			return null;	// TO BE IMPLEMENTED
+		}
 	}
 	
 	public ReturnObject add(int index, Object item) {		// TO BE IMPLEMENTED
