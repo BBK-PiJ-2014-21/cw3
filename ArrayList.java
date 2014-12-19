@@ -37,26 +37,36 @@ public class ArrayList implements List {
 	
 	public ReturnObject remove(int index) {
 		ReturnObject wrap = get(index);
-		if(wrap.hasError()) {
-			return wrap;
-		} else if(size()==1) {
-			list = null;
-			return wrap;
-		} else {
-			return null;	// TO BE IMPLEMENTED
+		if(!wrap.hasError()) {
+			if(size()==1) {
+				list = null;
+			} else {
+				ArrayList temp = new ArrayList();
+				temp.list = new Object[this.size()-1];
+				for(int i=0; i<index; i++) {
+					temp.list[i] = this.list[i];
+				}
+				for(int i=index+1; i<this.size(); i++) {
+					temp.list[i-1] = this.list[i];
+				} 
+			this.list = temp.list;
+			}
 		}
+		return wrap;
 	}
 	
-	public ReturnObject add(int index, Object item) {		// TO BE TESTED
+// this array size increases by one at each addition (doesn't have undefined values):
+// if the list is empty, only index 0 is accepted as valid input for the first element.
+	public ReturnObject add(int index, Object item) {
 		if(item==null) {
 			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INVALID_ARGUMENT);
 			return wrap;
 		} else {
-			ReturnObject wrap = get(index);
-			if(wrap.hasError()) {
+			if(isEmpty() && index!=0) {	
+				ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INDEX_OUT_OF_BOUNDS);
 				return wrap;
 			} else {
-				wrap = new ReturnObjectImpl(item, ErrorMessage.NO_ERROR);
+				ReturnObject wrap = new ReturnObjectImpl(item, ErrorMessage.NO_ERROR);
 				ArrayList temp = new ArrayList();
 				temp.list = new Object[this.size()+1];
 				temp.list[index] = item;
@@ -72,7 +82,7 @@ public class ArrayList implements List {
 		}
 	}
 	
-	public ReturnObject add(Object item) {		// TO BE TESTED
+	public ReturnObject add(Object item) {
 		if(item==null) {
 			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INVALID_ARGUMENT);
 			return wrap;
@@ -80,7 +90,7 @@ public class ArrayList implements List {
 			ReturnObject wrap = new ReturnObjectImpl(item, ErrorMessage.NO_ERROR);
 			if(isEmpty()) {
 				list = new Object[1];
-				list[1] = item;
+				list[0] = item;
 			} else {
 				ArrayList temp = new ArrayList();
 				temp.list = new Object[this.size()+1];
@@ -94,6 +104,16 @@ public class ArrayList implements List {
 		}
 	}
 	
+	public void printList() {
+		if(list==null) {
+			System.out.println("The list is empty");
+		} else {
+			for(int i=0; i<this.size(); i++) {
+				System.out.println(i + ". " + list[i]);
+			}
+		}
+	}			
+		
 }
 
 
