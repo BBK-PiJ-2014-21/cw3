@@ -22,6 +22,8 @@ public class ArrayList implements List {
 		}
 	}
 
+// this array size increases by one at each addition (doesn't have undefined values),
+// so there is no need to set an ErrorMessage.INVALID_ARGUMENT here as it will never happen
 	public ReturnObject get(int index) {
 		if(isEmpty()) {
 			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.EMPTY_STRUCTURE);
@@ -55,18 +57,16 @@ public class ArrayList implements List {
 		return wrap;
 	}
 	
-// this array size increases by one at each addition (doesn't have undefined values):
-// if the list is empty, only index 0 is accepted as valid input for the first element.
 	public ReturnObject add(int index, Object item) {
 		if(item==null) {
 			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INVALID_ARGUMENT);
 			return wrap;
 		} else {
-			if(isEmpty() && index!=0) {	
+			if(index<0 || index>=size()) {
 				ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INDEX_OUT_OF_BOUNDS);
 				return wrap;
 			} else {
-				ReturnObject wrap = new ReturnObjectImpl(item, ErrorMessage.NO_ERROR);
+				ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.NO_ERROR);
 				ArrayList temp = new ArrayList();
 				temp.list = new Object[this.size()+1];
 				temp.list[index] = item;
@@ -109,12 +109,9 @@ public class ArrayList implements List {
 			System.out.println("The list is empty");
 		} else {
 			for(int i=0; i<this.size(); i++) {
-				System.out.println(i + ". " + list[i]);
+				System.out.println("index " + i + ": " + list[i]);
 			}
 		}
 	}			
 		
 }
-
-
-	

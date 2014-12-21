@@ -26,6 +26,9 @@ public class ArrayListTest {
 		System.out.print("testing add(0.131).getReturnValue() >> ");
 		System.out.println(test.add(0.131).getReturnValue());
 		test.printList();
+		System.out.print("testing get(0).getReturnValue() >> ");
+		System.out.println(test.get(0).getReturnValue());
+		test.printList();
 		System.out.print("testing add(null).getError() >> ");
 		System.out.println(test.add(null).getError());
 		test.printList();
@@ -48,13 +51,13 @@ public class ArrayListTest {
 		test.printList();
 		System.out.println("================================================");
 	// testing add(index, Object)
-		System.out.print("testing add(2, 13).getError() >> ");
-		System.out.println(test.add(2, 13).getError());
-		System.out.print("testing add(0, \"String1\").getReturnValue() >> ");
-		System.out.println(test.add(0, "String1").getReturnValue());
+		System.out.print("testing add(0, 13).getError() >> ");
+		System.out.println(test.add(0, 13).getError());
+		System.out.print("testing add(\"String at index 0\").getReturnValue() >> ");
+		System.out.println(test.add("String at index 0").getReturnValue());
 		test.printList();
-		System.out.print("testing add(0, 0.131).getReturnValue() >> ");
-		System.out.println(test.add(0, 0.131).getReturnValue());
+		System.out.print("testing add(0.131).getReturnValue() >> ");
+		System.out.println(test.add(0.131).getReturnValue());
 		test.printList();
 		System.out.print("testing add(null).getError() >> ");
 		System.out.println(test.add(null).getError());
@@ -62,14 +65,16 @@ public class ArrayListTest {
 		System.out.print("testing add(1, 15).getReturnValue() >> ");
 		System.out.println(test.add(1, 15).getReturnValue());
 		test.printList();
-		System.out.println("ArrayList john = new ArrayList()");
-		ArrayList john = new ArrayList();
-		System.out.print("testing add(0, john).getReturnValue() >> ");
-		System.out.println(test.add(0, john).getReturnValue());
-		test.printList();
 		System.out.print("testing add(3, false).getReturnValue() >> ");
 		System.out.println(test.add(3, false).getReturnValue());
 		test.printList();
+		System.out.println("ArrayList array2 = new ArrayList()");
+		ArrayList array2 = new ArrayList();
+		System.out.println("array2.add(\"Tim\")");
+		array2.add("Tim");
+		array2.printList();
+
+
 	}
 	
 }
