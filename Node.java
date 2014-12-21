@@ -16,14 +16,13 @@ public class Node {
 	public void setValue(Object value) {
 		this.value = value;
 	}
-		
 	
 	public Node getNext() {
-		return this.next;
+		return next;
 	}
 	
-	public void setNext(Object value) {
-		next = new Node(value);
+	public void setNext(Node newNode) {
+		next = newNode;
 	}
 
 }
