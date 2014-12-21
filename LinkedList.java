@@ -41,7 +41,7 @@ public class LinkedList implements List {
 		return null;
 	}
 	
-	public ReturnObject add(int index, Object item) {	// TO BE FIXED
+	public ReturnObject add(int index, Object item) {
 		if(item==null) {
 			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INVALID_ARGUMENT);
 			return wrap;
@@ -50,7 +50,7 @@ public class LinkedList implements List {
 			return wrap;
 		} else {
 			size++;
-			ReturnObject wrap = new ReturnObjectImpl(item, ErrorMessage.NO_ERROR);
+			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.NO_ERROR);
 			Node newNode = new Node(item);
 			if(index==0) {
 				newNode.setNext(head);
