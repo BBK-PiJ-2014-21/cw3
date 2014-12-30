@@ -1,13 +1,10 @@
 
 public class ArrayList implements List {
-	private Object[] list;
+	private Object[] list = new Object[10];
+	private int size = 0;
 	
-	public ArrayList() {
-		list = null;
-	}
-	
-	public boolean isEmpty() {
-		if(list==null) {
+	public boolean isEmpty() {gi5t 
+		if(size()==0) {
 			return true;
 		} else {
 			return false;
@@ -15,15 +12,25 @@ public class ArrayList implements List {
 	}
 	
 	public int size() {
-		if(list==null) {
-			return 0;
+		return size;
+	}
+	
+	public boolean isFull() {
+		if(list.length==size()) {
+			return true;
 		} else {
-			return list.length;
+			return false;
+		}
+	}
+	
+	public void expandArray() {
+		Object[] temp = list;
+		list = new Object[temp.length*2];
+		for(int i=0; i<size(); i++) {
+			list[i] = temp[i];
 		}
 	}
 
-// this array size increases by one at each addition (doesn't have undefined values),
-// so there is no need to set an ErrorMessage.INVALID_ARGUMENT here as it will never happen
 	public ReturnObject get(int index) {
 		if(isEmpty()) {
 			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.EMPTY_STRUCTURE);
@@ -40,19 +47,14 @@ public class ArrayList implements List {
 	public ReturnObject remove(int index) {
 		ReturnObject wrap = get(index);
 		if(!wrap.hasError()) {
-			if(size()==1) {
-				list = null;
+			if(index==size()-1) {
+				list[index] = null;
 			} else {
-				ArrayList temp = new ArrayList();
-				temp.list = new Object[this.size()-1];
-				for(int i=0; i<index; i++) {
-					temp.list[i] = this.list[i];
+				for(int i=index; i<size(); i++) {
+					list[i] = list[i+1];
 				}
-				for(int i=index+1; i<this.size(); i++) {
-					temp.list[i-1] = this.list[i];
-				} 
-			this.list = temp.list;
 			}
+			size--;
 		}
 		return wrap;
 	}
@@ -62,21 +64,19 @@ public class ArrayList implements List {
 			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INVALID_ARGUMENT);
 			return wrap;
 		} else {
-			if(index<0 || index>=size()) {
+			if(index<0 || index>size()-1) {
 				ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INDEX_OUT_OF_BOUNDS);
 				return wrap;
 			} else {
 				ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.NO_ERROR);
-				ArrayList temp = new ArrayList();
-				temp.list = new Object[this.size()+1];
-				temp.list[index] = item;
-				for(int i=0; i<index; i++) {
-					temp.list[i] = this.list[i];
+				if(isFull()) {
+					expandArray();
 				}
-				for(int i=index+1; i<temp.size(); i++) {
-					temp.list[i] = this.list[i-1];
+				for(int i=size()-1; i>=index; i--) {
+					list[i+1] = list[i];
 				}
-				this.list = temp.list;
+				list[index] = item;
+				size++;
 				return wrap;
 			}
 		}
@@ -87,30 +87,24 @@ public class ArrayList implements List {
 			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INVALID_ARGUMENT);
 			return wrap;
 		} else {
-			ReturnObject wrap = new ReturnObjectImpl(item, ErrorMessage.NO_ERROR);
-			if(isEmpty()) {
-				list = new Object[1];
-				list[0] = item;
-			} else {
-				ArrayList temp = new ArrayList();
-				temp.list = new Object[this.size()+1];
-				temp.list[temp.size()-1] = item;
-				for(int i=0; i<this.size(); i++) {
-					temp.list[i] = this.list[i];
-				}
-				this.list = temp.list;
+			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.NO_ERROR);
+			if(isFull()) {
+				expandArray();
 			}
+			list[size()] = item;
+			size++;
 			return wrap;
 		}
 	}
 	
 	public void printList() {
-		if(list==null) {
+		if(isEmpty()) {
 			System.out.println("The list is empty");
 		} else {
-			for(int i=0; i<this.size(); i++) {
+			for(int i=0; i<size(); i++) {
 				System.out.println("index " + i + ": " + list[i]);
 			}
+			System.out.println("size: " + size());
 		}
 	}			
 		
