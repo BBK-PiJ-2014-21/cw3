@@ -1,11 +1,14 @@
-// tests for both ArrayList and ReturnObjectImpl objects
 
-public class ArrayListTest {
-	
+public class TestList {
+
 	public static void main(String[] args) {
-		ArrayList test = new ArrayList();
+		ArrayList aList = new ArrayList();
+		launch(aList);
+	}	
+		
+	public static void launch(List test) {
 		System.out.println("===============================================");
-		System.out.println("new ArrayList() created, with no elements.");
+		System.out.println("new List created, with no elements.");
 		System.out.println("===============================================");
 	// testing size(), isEmpty(), hasError(), getError()
 		System.out.print("testing size() >> ");
@@ -73,8 +76,16 @@ public class ArrayListTest {
 		System.out.println("array2.add(\"Tim\")");
 		array2.add("Tim");
 		array2.printList();
-
-
+	}
+	
+	public static void printArrayList(List test) {
+		if(test.isEmpty()) {
+			System.out.println("The list is empty");
+		} else {
+			for(int i=0; i<test.size(); i++) {
+				System.out.println("index " + i + ": " + test.get(i).getReturnValue());
+			}
+		}
 	}
 	
 }

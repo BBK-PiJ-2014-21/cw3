@@ -3,7 +3,7 @@ public class ArrayList implements List {
 	private Object[] list = new Object[10];
 	private int size = 0;
 	
-	public boolean isEmpty() {gi5t 
+	public boolean isEmpty() {
 		if(size()==0) {
 			return true;
 		} else {
@@ -13,7 +13,7 @@ public class ArrayList implements List {
 	
 	public int size() {
 		return size;
-	}
+	} 
 	
 	public boolean isFull() {
 		if(list.length==size()) {
@@ -95,17 +95,6 @@ public class ArrayList implements List {
 			size++;
 			return wrap;
 		}
-	}
-	
-	public void printList() {
-		if(isEmpty()) {
-			System.out.println("The list is empty");
-		} else {
-			for(int i=0; i<size(); i++) {
-				System.out.println("index " + i + ": " + list[i]);
-			}
-			System.out.println("size: " + size());
-		}
-	}			
+	}		
 		
 }
