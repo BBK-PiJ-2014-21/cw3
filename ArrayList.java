@@ -1,6 +1,6 @@
 
 public class ArrayList implements List {
-	private Object[] list = new Object[10];
+	private Object[] list = new Object[5];
 	private int size = 0;
 	
 	public boolean isEmpty() {
@@ -15,8 +15,8 @@ public class ArrayList implements List {
 		return size;
 	} 
 	
-	public boolean isFull() {
-		if(list.length==size()) {
+	public boolean almostFull() {
+		if(size()==list.length-1) {
 			return true;
 		} else {
 			return false;
@@ -69,7 +69,7 @@ public class ArrayList implements List {
 				return wrap;
 			} else {
 				ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.NO_ERROR);
-				if(isFull()) {
+				if(almostFull()) {
 					expandArray();
 				}
 				for(int i=size()-1; i>=index; i--) {
@@ -88,7 +88,7 @@ public class ArrayList implements List {
 			return wrap;
 		} else {
 			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.NO_ERROR);
-			if(isFull()) {
+			if(almostFull()) {
 				expandArray();
 			}
 			list[size()] = item;
@@ -97,4 +97,13 @@ public class ArrayList implements List {
 		}
 	}		
 		
+	public void printList() {	// for tests
+		if(isEmpty()) {
+			System.out.println("The list is empty");
+		} else {
+			for(int i=0; i<size(); i++) {
+				System.out.println("index " + i + ": " + get(i).getReturnValue());
+			}
+		}
+	}
 }
