@@ -37,8 +37,26 @@ public class LinkedList implements List {
 		}
 	}
 	
-	public ReturnObject remove(int index) {	// TO BE IMPLEMENTED
-		return null;
+	public ReturnObject remove(int index) {
+		ReturnObject wrap = get(index);
+		if(!wrap.hasError()) {
+			size--;
+			if(index==0) {
+				if(size()==1) {
+					head = null;
+				} else {
+					Node newHead = head.getNext();
+					head = newHead;
+				}
+			} else {
+				Node nodeBeforeIndex = head;
+				for(int i=1; i<index; i++) {
+					nodeBeforeIndex = nodeBeforeIndex.getNext();
+				}
+				nodeBeforeIndex.setNext(nodeBeforeIndex.getNext().getNext());
+			}
+		}
+		return wrap;
 	}
 	
 	public ReturnObject add(int index, Object item) {
@@ -73,7 +91,7 @@ public class LinkedList implements List {
 			return wrap;
 		} else {
 			size++;
-			ReturnObject wrap = new ReturnObjectImpl(item, ErrorMessage.NO_ERROR);
+			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.NO_ERROR);
 			Node newNode = new Node(item);
 			if(isEmpty()) {
 				head = newNode;
@@ -92,16 +110,15 @@ public class LinkedList implements List {
 		if(isEmpty()) {
 			System.out.println("The list is empty");
 		} else {
-			int n=0;
 			Node aux = head;
-			System.out.println("index " + n + ": " + aux.getValue());
+			System.out.println("index 0: " + aux.getValue());
+			int n=0;
 			while(aux.getNext()!=null) {
 				aux = aux.getNext();
 				n++;
 				System.out.println("index " + n + ": " + aux.getValue());
 			}
 		}
-	
 	}
 
 }
