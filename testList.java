@@ -3,82 +3,89 @@ public class TestList {
 
 	public static void main(String[] args) {
 		ArrayList aList = new ArrayList();
-		launch(aList);
+		System.out.println("=============================================");
+		System.out.println("new ArrayList() created, with no elements");
+		System.out.println("=============================================");
+		test1(aList);
+		printList(aList);
+		System.out.println("=============================================");
+		test2(aList);
+		printList(aList);
+		System.out.println("=============================================");
+		test3(aList);
+		printList(aList);
+		System.out.println("=============================================");
+		test4(aList);
+		printList(aList);
+		System.out.println("=============================================");
 	}	
 		
-	public static void launch(List test) {
-		System.out.println("===============================================");
-		System.out.println("new List created, with no elements.");
-		System.out.println("===============================================");
+	public static void test1(List test) {
 	// testing size(), isEmpty(), hasError(), getError()
-		System.out.print("testing size() >> ");
+		System.out.print("size() >> ");
 		System.out.println(test.size());
-		System.out.print("testing isEmpty() >> ");
+		System.out.print("isEmpty() >> ");
 		System.out.println(test.isEmpty());
-		System.out.print("testing get(0).hasError() >> ");
+		System.out.print("get(0).hasError() >> ");
 		System.out.println(test.get(0).hasError());
-		System.out.print("testing get(0).getError() >> ");
+		System.out.print("get(0).getError() >> ");
 		System.out.println(test.get(0).getError());
-		System.out.println("================================================");
+	}
+	
+	public static void test2(List test) {
 	// testing get(), getReturnValue(), add(Object)
-		System.out.print("testing get(0).getReturnValue() >> ");
+		System.out.print("get(0).getReturnValue() >> ");
 		System.out.println(test.get(0).getReturnValue());
-		System.out.println("testing add(\"String1\")");
-		test.add("String1");
-		test.printList();
-		System.out.print("testing add(0.131).getReturnValue() >> ");
+		System.out.println("add(\"String1\").getError()");
+		test.add("String1").getError();
+		System.out.print("add(0.131).getReturnValue() >> ");
 		System.out.println(test.add(0.131).getReturnValue());
-		test.printList();
-		System.out.print("testing get(0).getReturnValue() >> ");
+		System.out.print("get(0).getReturnValue() >> ");
 		System.out.println(test.get(0).getReturnValue());
-		test.printList();
-		System.out.print("testing add(null).getError() >> ");
+		System.out.print("add(null).getError() >> ");
 		System.out.println(test.add(null).getError());
-		test.printList();
-		System.out.println("================================================");
+	}
+	
+	public static void test3(List test) {
 	// testing remove(index, Object)
-		System.out.print("testing remove(-1).getError() >> ");
+		System.out.print("remove(-1).getError() >> ");
 		System.out.println(test.remove(-1).getError());
-		test.printList();
-		System.out.print("testing remove(1).getError() >> ");
+		System.out.print("remove(1).getError() >> ");
 		System.out.println(test.remove(1).getError());
-		test.printList();
-		System.out.print("testing remove(1).getError() >> ");
+		System.out.print("remove(1).getError() >> ");
 		System.out.println(test.remove(1).getError());
-		test.printList();
-		System.out.print("testing remove(0).getError() >> ");
+		System.out.print("remove(0).getError() >> ");
 		System.out.println(test.remove(0).getError());
-		test.printList();
-		System.out.print("testing remove(0).getError() >> ");
+		System.out.print("remove(0).getError() >> ");
 		System.out.println(test.remove(0).getError());
-		test.printList();
-		System.out.println("================================================");
+	}
+	
+	public static void test4(List test) {
 	// testing add(index, Object)
-		System.out.print("testing add(0, 13).getError() >> ");
+		System.out.print("add(0, 13).getError() >> ");
 		System.out.println(test.add(0, 13).getError());
-		System.out.print("testing add(\"String at index 0\").getReturnValue() >> ");
+		System.out.print("add(\"String at index 0\").getReturnValue() >> ");
 		System.out.println(test.add("String at index 0").getReturnValue());
-		test.printList();
-		System.out.print("testing add(0.131).getReturnValue() >> ");
+		System.out.print("add(0.131).getReturnValue() >> ");
 		System.out.println(test.add(0.131).getReturnValue());
-		test.printList();
-		System.out.print("testing add(null).getError() >> ");
+		System.out.print("add(null).getError() >> ");
 		System.out.println(test.add(null).getError());
-		test.printList();
-		System.out.print("testing add(1, 15).getReturnValue() >> ");
+		System.out.print("add(1, 15).getReturnValue() >> ");
 		System.out.println(test.add(1, 15).getReturnValue());
-		test.printList();
-		System.out.print("testing add(3, false).getReturnValue() >> ");
+		System.out.print("add(3, false).getReturnValue() >> ");
 		System.out.println(test.add(3, false).getReturnValue());
-		test.printList();
 		System.out.println("ArrayList array2 = new ArrayList()");
 		ArrayList array2 = new ArrayList();
 		System.out.println("array2.add(\"Tim\")");
 		array2.add("Tim");
-		array2.printList();
+		System.out.println("printList(array2)");
+		printList(array2);
+		System.out.println("============");
+		System.out.println("add(array2))");
+		test.add(array2);
 	}
 	
-	public static void printArrayList(List test) {
+	public static void printList(ArrayList test) {
 		if(test.isEmpty()) {
 			System.out.println("The list is empty");
 		} else {
