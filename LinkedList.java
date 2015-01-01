@@ -105,24 +105,6 @@ public class LinkedList implements List {
 			return wrap;
 		}
 	}
-	
-	/**
-	 * Print the elements of the list (for tests)
-	 */
-	public void printList() {
-		if(isEmpty()) {
-			System.out.println("The list is empty");
-		} else {
-			Node aux = head;
-			System.out.println("index 0: " + aux.getValue());
-			int n=0;
-			while(aux.getNext()!=null) {
-				aux = aux.getNext();
-				n++;
-				System.out.println("index " + n + ": " + aux.getValue());
-			}
-		}
-	}
 
 }
 	

@@ -102,16 +102,4 @@ public class ArrayList implements List {
 		}
 	}		
 	
-	/**
-	 * Print the elements of the list (for tests)
-	 */
-	public void printList() {
-		if(isEmpty()) {
-			System.out.println("The list is empty");
-		} else {
-			for(int i=0; i<size(); i++) {
-				System.out.println("index " + i + ": " + get(i).getReturnValue());
-			}
-		}
-	}
 }
