@@ -34,6 +34,28 @@ public class TestList {
 		test4(lList);
 		lList.printList();
 		System.out.println("=============================================");
+		FunctionalArrayList funkList = new FunctionalArrayList();
+		System.out.println("=============================================");
+		System.out.println("new FunctionalArrayList() created, with no elements");
+		System.out.println("=============================================");
+		test1(funkList);
+		lList.printList();
+		System.out.println("=============================================");
+		test2(funkList);
+		lList.printList();
+		System.out.println("=============================================");
+		test3(funkList);
+		lList.printList();
+		System.out.println("=============================================");
+		test4(funkList);
+		lList.printList();
+		System.out.println("=============================================");
+		System.out.print("testing head().getReturnValue() > ");
+		System.out.println(funkList.head().getReturnValue());
+		System.out.println("test4(rest())");
+		test4(funkList.rest());
+		System.out.println("=============================================");
+		
 	}	
 		
 	public static void test1(List test) {
