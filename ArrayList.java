@@ -1,7 +1,12 @@
 
 public class ArrayList implements List {
-	private Object[] list = new Object[5];
-	private int size = 0;
+	private Object[] list;
+	private int size;
+	
+	public ArrayList() {
+		list = new Object[10];
+		size = 0;
+	}
 	
 	public boolean isEmpty() {
 		if(size()==0) {
@@ -96,8 +101,11 @@ public class ArrayList implements List {
 			return wrap;
 		}
 	}		
-		
-	public void printList() {	// for tests
+	
+	/**
+	 * Print the elements of the list (for tests)
+	 */
+	public void printList() {
 		if(isEmpty()) {
 			System.out.println("The list is empty");
 		} else {

@@ -106,6 +106,9 @@ public class LinkedList implements List {
 		}
 	}
 	
+	/**
+	 * Print the elements of the list (for tests)
+	 */
 	public void printList() {
 		if(isEmpty()) {
 			System.out.println("The list is empty");
