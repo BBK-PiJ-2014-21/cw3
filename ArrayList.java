@@ -7,7 +7,7 @@ public class ArrayList implements List {
 	private Object[] list;
 	private int size;
 	/**
-	 * Initial capacity is set as 10 (it is expanded with method expandArray() if needed);
+	 * Initial capacity is set at 10 (it is expanded with method expandArray() if needed);
 	 * field size keeps track of the number of elements currently in the list.
  	 */
 	public ArrayList() {
