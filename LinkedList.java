@@ -27,17 +27,17 @@ public class LinkedList implements List {
 
 	public ReturnObject get(int index) {
 		if(isEmpty()) {
-			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.EMPTY_STRUCTURE);
+			ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
 			return wrap;
 		} else if(index<0 || index>=size()) {
-			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return wrap;
 		} else {
 			Node nodeAtIndex = head;
 			for(int i=0; i<index; i++) {
 				nodeAtIndex = nodeAtIndex.getNext();
 			}	
-			ReturnObject wrap = new ReturnObjectImpl(nodeAtIndex.getValue(), ErrorMessage.NO_ERROR);
+			ReturnObject wrap = new ReturnObjectImpl(nodeAtIndex.getValue());
 			return wrap;	
 		}
 	}
@@ -66,14 +66,14 @@ public class LinkedList implements List {
 	
 	public ReturnObject add(int index, Object item) {
 		if(item==null) {
-			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INVALID_ARGUMENT);
+			ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 			return wrap;
 		} else if(index<0 || index>=size()) {
-			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return wrap;
 		} else {
 			size++;
-			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.NO_ERROR);
+			ReturnObject wrap = new ReturnObjectImpl(null);
 			Node newNode = new Node(item);
 			if(index==0) {
 				newNode.setNext(head);
@@ -92,11 +92,11 @@ public class LinkedList implements List {
 	
 	public ReturnObject add(Object item) {
 		if(item==null) {
-			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.INVALID_ARGUMENT);
+			ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 			return wrap;
 		} else {
 			size++;
-			ReturnObject wrap = new ReturnObjectImpl(null, ErrorMessage.NO_ERROR);
+			ReturnObject wrap = new ReturnObjectImpl(null);
 			Node newNode = new Node(item);
 			if(isEmpty()) {
 				head = newNode;

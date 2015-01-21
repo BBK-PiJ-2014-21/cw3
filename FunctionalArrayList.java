@@ -8,14 +8,22 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
 	public FunctionalArrayList() {
 		super();
 	}
-	
+	/**
+	 * The get(index) method in the superclass is already handling a possible EMPTY_STRUCTURE {@see ErrorMessage}
+	 */
 	public ReturnObject head() {
-		return get(0);
+		ReturnObject copyHead = get(0);
+		return copyHead;
 	}
 	
 	public FunctionalList rest() {
-		FunctionalList funkList = this;
-		funkList.remove(0);
+		FunctionalList funkList = new FunctionalArrayList();
+		if (!isEmpty()) {
+			for (int i = 0; i < size(); i++) {
+				funkList.add(get(i).getReturnValue());
+			}
+			funkList.remove(0);
+		}
 		return funkList;
 	}
 	

@@ -11,7 +11,7 @@ public class Node {
 	 * @param value the Object which the Node contains.
 	 */
 	public Node(Object value) {
-		this.object = value;
+		this.value = value;
 		next = null;
 	}
 	
