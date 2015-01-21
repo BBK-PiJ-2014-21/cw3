@@ -34,13 +34,9 @@ public class ReturnObjectImpl implements ReturnObject {
 	public ErrorMessage getError() {
 		return message;
 	}
-	
+
 	public Object getReturnValue() {
-		if(hasError()) {
-			return null;
-		} else {
-			return value;
-		}
+		return value;
 	}
 	
 }
