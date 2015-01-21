@@ -1,4 +1,9 @@
-
+/**
+ * Implementation of interface {@see List} as a singly linked-list of Objects,
+ * using class {@see Node} as field;
+ *
+ * @author fbarto01 (bbk-pij-2014-21)
+ */
 public class LinkedList implements List {
 	private Node head;
 	private int size;

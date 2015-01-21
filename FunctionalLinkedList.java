@@ -1,4 +1,8 @@
-
+/**
+ * Implementation of interface {@see FunctionalList} which extends the singly linked-list {@see LinkedList}
+ *
+ * @author fbarto01 (bbk-pij-2014-21)
+ */
 public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 	
 	public FunctionalLinkedList() {

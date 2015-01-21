@@ -1,4 +1,8 @@
-
+/**
+ * Implementation of interface {@see FunctionalList} which extends the array of Objects {@see ArrayList}
+ * 
+ * @author fbarto01 (bbk-pij-2014-21)
+ */
 public class FunctionalArrayList extends ArrayList implements FunctionalList {
 	
 	public FunctionalArrayList() {
