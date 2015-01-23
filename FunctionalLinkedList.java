@@ -1,7 +1,7 @@
 /**
  * Implementation of interface {@see FunctionalList} which extends the singly linked-list {@see LinkedList}
  *
- * @author fbarto01 (bbk-pij-2014-21)
+ * @author federico bartolomei (bbk-pij-2014-21)
  */
 public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 	
@@ -14,8 +14,13 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 	}
 	
 	public FunctionalList rest() {
-		FunctionalList funkList = this;
-		funkList.remove(0);
+		FunctionalList funkList = new FunctionalLinkedList();
+        if(!isEmpty()) {
+            for(int i=0; i<size(); i++) {
+                funkList.add(get(i).getReturnValue());
+            }
+            funkList.remove(0);
+        }
 		return funkList; 
 	}
 	
