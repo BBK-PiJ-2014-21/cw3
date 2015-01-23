@@ -1,14 +1,24 @@
 /**
  * Implementation of interface {@see List} as an array of Objects;
+ * private field size keeps track of the number of elements currently in the list.
  *
- * @author fbarto01 (bbk-pij-2014-21)  
+ * @author federico bartolomei (bbk-pij-2014-21)
  */
 public class ArrayList implements List {
 	private Object[] list;
 	private int size;
-	/**
-	 * Initial capacity is set at 10 (it is expanded with method expandArray() if needed);
-	 * field size keeps track of the number of elements currently in the list.
+    /**
+     * Initial capacity can be specified (will be expanded later if needed);
+     *
+     * @param capacity the initial capacity of the array  
+     */
+    public ArrayList(int capacity) {
+        list = new Object[capacity];
+        size = 0;
+    }
+    /**
+	 * Initial capacity is set at 10 unless specified using the former constructor; 
+     * (it is expanded with method expandArray() if needed);
  	 */
 	public ArrayList() {
 		list = new Object[10];
@@ -39,8 +49,8 @@ public class ArrayList implements List {
 		}
 	}
 	/**
-	 * This method creates a new array with twice as much capacity as the previos one,
-	 * and copies all the element of the old one to the new one.
+	 * This method creates a new array with twice as much capacity as the previous one,
+	 * and copies all the element of the old one into the new one.
 	 */
 	public void expandArray() {
 		Object[] temp = list;
