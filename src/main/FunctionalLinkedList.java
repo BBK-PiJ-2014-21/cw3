@@ -1,3 +1,5 @@
+package src.main;
+
 /**
  * Implementation of interface {@see FunctionalList} which extends the singly linked-list {@see LinkedList}
  *
@@ -8,10 +10,18 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 	public FunctionalLinkedList() {
 		super();
 	}
-	
+
 	public ReturnObject head() {
-		return get(0);
-	}
+        if (isEmpty()) {
+            ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+            return wrap;
+        } else {
+            FunctionalList funkList = new FunctionalLinkedList();
+            funkList.add(get(0).getReturnValue());
+            ReturnObject wrap = funkList.get(0);
+            return wrap;
+        }
+    }
 	
 	public FunctionalList rest() {
 		FunctionalList funkList = new FunctionalLinkedList();

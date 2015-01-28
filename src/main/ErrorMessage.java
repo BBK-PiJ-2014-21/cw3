@@ -1,3 +1,5 @@
+package src.main;
+
 public enum ErrorMessage {
     /**
      * No error. 

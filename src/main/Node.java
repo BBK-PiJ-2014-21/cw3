@@ -1,3 +1,5 @@
+package src.main;
+
 /**
  * Node class created for {@see LinkedList} implementation of {@see List} interface,
  * with standard getters and setters.

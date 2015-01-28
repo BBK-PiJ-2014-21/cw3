@@ -1,3 +1,5 @@
+package src.main;
+
 /**
  * A sampleable list can be sampled. 
  * 

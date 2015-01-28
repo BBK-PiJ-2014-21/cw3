@@ -1,3 +1,5 @@
+package src.main;
+
 /**
  * Implementation of interface {@see List} as a singly linked-list of Objects,
  * using class {@see Node} as field;
@@ -96,7 +98,7 @@ public class LinkedList implements List {
 			return wrap;
 		} else {
 			size++;
-			ReturnObject wrap = new ReturnObjectImpl(null);
+			ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
 			Node newNode = new Node(item);
 			if(isEmpty()) {
 				head = newNode;

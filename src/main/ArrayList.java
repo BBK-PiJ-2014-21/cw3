@@ -1,6 +1,7 @@
+package src.main;
+
 /**
  * Implementation of interface {@see List} as an array of Objects;
- * private field size keeps track of the number of elements currently in the list.
  *
  * @author federico bartolomei (bbk-pij-2014-21)
  */
@@ -9,7 +10,8 @@ public class ArrayList implements List {
 	private int size;
     /**
      * Initial capacity can be specified (will be expanded later if needed);
-     *
+     * field size keeps track of... TODO check Arrays<E> Oracle documentation for Javadoc hints*
+     * 
      * @param capacity the initial capacity of the array  
      */
     public ArrayList(int capacity) {
@@ -116,7 +118,7 @@ public class ArrayList implements List {
 			ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 			return wrap;
 		} else {
-			ReturnObject wrap = new ReturnObjectImpl(null);
+			ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
 			if(almostFull()) {
 				expandArray();
 			}

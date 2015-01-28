@@ -1,3 +1,5 @@
+package src.main;
+
 /**
  * Implementation of interface {@see SampleableList}
  * All the methods from interface {@list} are overridden,

@@ -1,3 +1,5 @@
+package src.main;
+
 /**
  * Implementation of interface {@see FunctionalList} which extends the array {@see ArrayList}
  * 
@@ -11,6 +13,7 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
 	/**
 	 * The get(index) method in the superclass is already handling a possible EMPTY_STRUCTURE {@see ErrorMessage}
 	 */
+    // TODO: see FunctionalLinkedList
 	public ReturnObject head() {
 		ReturnObject copyHead = get(0);
 		return copyHead;

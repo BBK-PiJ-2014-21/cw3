@@ -1,3 +1,5 @@
+package src.main;
+
 /**
  * An implementation of a stack with additional methods. 
  * 

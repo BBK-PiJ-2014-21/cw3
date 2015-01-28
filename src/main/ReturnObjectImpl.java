@@ -1,3 +1,5 @@
+package src.main;
+
 /**
  * Implementation of interface {@see ReturnObject} 
  * 
@@ -7,8 +9,9 @@ public class ReturnObjectImpl implements ReturnObject {
 	private Object value;
 	private ErrorMessage message;
 	/**
-	 * Constructor for invalid operations
-	 * @param message the {@see ErrorMessage} wrapping the Object returned (which is always null)
+	 * Constructor for either an invalid operations or a valid operation with an empty Object to return.
+     *
+	 * @param message the {@see ErrorMessage} wrapping the Object returned (which with this constructor always null).
 	 */
 	public ReturnObjectImpl(ErrorMessage message) {
 		this.value = null;
@@ -22,7 +25,7 @@ public class ReturnObjectImpl implements ReturnObject {
 		this.value = value;
 		this.message = ErrorMessage.NO_ERROR;
 	}
-	
+    
 	public boolean hasError() {
 		if(message==ErrorMessage.NO_ERROR) {
 			return false;
