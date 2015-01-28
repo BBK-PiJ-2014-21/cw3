@@ -3,9 +3,7 @@ package src.test;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import src.main.ErrorMessage;
-import src.main.ReturnObject;
-import src.main.ReturnObjectImpl;
+import src.main.*;
 
 import static org.junit.Assert.*;
 /**

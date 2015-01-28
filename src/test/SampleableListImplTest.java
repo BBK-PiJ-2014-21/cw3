@@ -1,4 +1,5 @@
-
+package src.test;
+/*
 public class SampleableListImplTest {
 	
 	public static void main(String[] args) {
@@ -30,6 +31,7 @@ public class SampleableListImplTest {
 	}
 	
 }
-		
+	
+*/
 		
 		

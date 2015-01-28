@@ -1,17 +1,35 @@
-public class FunctionalArrayListTest {
-	
-	public static void main(String[] args) {
-		TestList launcher = new TestList();
-		FunctionalList funkList = new FunctionalArrayList();
-		System.out.println("=============================================");
-		System.out.println("new FunctionalArrayList() created, with no elements");
-		System.out.println("=============================================");
-	
+import src.main.FunctionalArrayList;
+/**
+ * 
+ */
+public class FunctionalArrayListTest extends TestList {
+    /**
+     *
+     *  
+     * @return
+     */
+    @Override
+    protected FunctionalArrayList createList() {
+        return new FunctionalArrayList();
+    }
+    /**
+     * 
+     * @return
+     */
+    protected FunctionalArrayList createFunkList() {
+        return new FunctionalArrayList();
+    }
+
+}
+
+/*
+
+// TODO add specific methods for FunctionalTESTS (create new abstract class?)
 		funkList.add("String at index 0");
 		funkList.add(0, 2);
 		System.out.println("List 1, index 0: " + funkList.get(0).getReturnValue());
 		System.out.println("List 1, index 1: " + funkList.get(1).getReturnValue());
-
+// TODO check that is actually a copy and the original list is not affected!
 		FunctionalList secondList = funkList.rest();
 		System.out.println("List 2, index 0: " + secondList.get(0).getReturnValue());
 		System.out.println("List 2, index 1: " + secondList.get(1).getReturnValue());
@@ -23,13 +41,15 @@ public class FunctionalArrayListTest {
 		System.out.println("List 1, index 1: " + funkList.get(1).getReturnValue());
 		System.out.println("List 2, index 0: " + secondList.get(0).getReturnValue());
 
-	/*	
+
 		launcher.test1(funkList);
 		launcher.test2(funkList);
 		launcher.test3(funkList);
 		launcher.test4(funkList);
 		launcher.functionalTest(funkList);
-	*/
+
 	}
 
 }
+            
+*/

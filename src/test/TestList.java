@@ -1,21 +1,86 @@
+import org.hamcrest.Matchers;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-public class TestList {
+import src.main.*;
 
-	public void test1(List test) {
-		System.out.println("=============================================");
-	// testing size(), isEmpty(), hasError(), getError()
-		System.out.print("size() >> ");
-		System.out.println(test.size());
-		System.out.print("isEmpty() >> ");
-		System.out.println(test.isEmpty());
-		System.out.print("get(0).hasError() >> ");
-		System.out.println(test.get(0).hasError());
-		System.out.print("get(0).getError() >> ");
-		System.out.println(test.get(0).getError());
-		printList(test);
-	}
-	
-	public void test2(List test) {
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
+
+/**
+ * Abstract class to test the various implementations of interface {@see List}.
+ */
+public abstract class TestList {
+    private List list;
+    private FunctionalList funkList;
+    /**
+     *
+     */
+    protected abstract List createList();
+    /**
+     * 
+     */
+    protected abstract FunctionalList createFunkList();
+    
+    @Before
+    public void setUp() {
+        list = createList();
+        funkList = createFunkList();
+    }
+    @After
+    public void tearDown() {    
+        list = null;
+    }
+    /**
+     * 
+     */
+	@Test
+    public void testEmptyListIsEmpty() {
+        assertTrue(list.isEmpty());
+    }
+    /**
+     * 
+     */
+    @Test
+    public void testHamcrestWorks() {
+        assertThat("Stringy", is(equalTo("Stringy")));
+    }
+    /**
+     * 
+     */
+    @Test
+    public void compareRemoveOnTwoImpl() {
+        assertEquals(list.remove(-1).getError(), ErrorMessage.INDEX_OUT_OF_BOUNDS);
+    }
+    @Test
+    public void testCompareListWithStackPopOneElement() {
+        list.add("String1");
+        StackImpl stack = new StackImpl(list);
+        assertThat(list.get(0).getReturnValue(), sameInstance(stack.pop().getReturnValue()));
+    }
+    /**
+     * 
+     */
+    @Test
+    public void fiveAddsGetFirst() {
+        fiveAdds();
+        assertEquals(list.get(0).getReturnValue(), "StringAtIndex0");
+    }
+    /**
+     *
+     */
+    public void fiveAdds() {
+        list.add("StringAtIndex0");
+        list.add(2);
+        list.add(3.33);
+        list.add("Four");
+        list.add(true);
+    }
+    
+    /*
+    
+	public void test2() {
 	// testing get(), getReturnValue(), add(Object)
 		System.out.print("get(0).getReturnValue() >> ");
 		System.out.println(test.get(0).getReturnValue());
@@ -37,7 +102,7 @@ public class TestList {
 		printList(test);
 	}
 	
-	public void test3(List test) {
+	public void test3() {
 	// testing add(index, Object)
 		System.out.print("add(0, 13).getError() >> ");
 		System.out.println(test.add(0, 13).getError());
@@ -68,7 +133,7 @@ public class TestList {
 		printList(test);
 	}
 
-	public void test4(List test) {
+	public void test4() {
 	// testing remove(index, Object)
 		System.out.print("remove(9).getError() >> ");
 		System.out.println(test.remove(9).getError());
@@ -110,7 +175,7 @@ public class TestList {
 		System.out.println("SIZE: " + list.size());
 		System.out.println("=============================================");
 	}
-	
-
+    
+    */
 	
 }
