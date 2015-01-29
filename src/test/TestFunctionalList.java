@@ -1,40 +1,40 @@
+import src.main.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import src.main.FunctionalList;
-
 import static org.junit.Assert.*;
 
 /**
- *
+ * Abstract class to test with JUnit the implementations of the interface {@see FunctionalList}.
+ * All the extended methods of that interface are tested here. These implementations can also run 
+ * the test of the superclass {@see TestList} which verify the inherited methods of {@see List}.
+ * 
  * @author federico bartolomei (bbk-pij-2014-21) 
  */
-public abstract class TestFunctionalList {
+public abstract class TestFunctionalList extends TestList {
     private FunctionalList list;
     /**
-     * 
-     * @return
+     * This abstract method has to be implemented by each subclass which needs to run this tests.
+     *
+     * @return the specific implementation of {@see FunctionalList}.
      */
-    protected abstract FunctionalList createList();
+    protected abstract FunctionalList createFunkList();
     /**
      * 
      */
     @Before
-    public void setUp() {
-        list = createList();
+    public void setUpAndTestList() {
+        list = createFunkList();
     }
     @After
     public void tearDown() {
         list = null;
     }
-    /**
-     * 
-     */
+
     @Test
     public void testHeadOnEmptyList() {
-        assertNotNull(list.head().getReturnValue());
+        assertNull(list.head().getReturnValue());
     }
-    
-    
     
 }

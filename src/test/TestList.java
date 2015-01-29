@@ -1,21 +1,26 @@
+import src.main.*;
+
 import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import src.main.*;
-
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 /**
- * Abstract class to test the various implementations of interface {@see List}.
+ * Abstract class to test with JUnit the various implementations of interface {@see List}.
+ * All the methods of the interface are tested here, and the classes implementing it 
+ * should extend either this or the other test subclass {@see TestFunctionalList} 
+ * if they are implementations of that interface, in which case they will be tested in both classes.
+ * 
+ * @author federico bartolomei (bbk-pij-2014-21) 
  */
 public abstract class TestList {
     private List list;
-    private FunctionalList funkList;
     /**
-     *
+     * This abstract method has to be implemented by each subclass which needs to run this tests.
+     * 
+     * @return the specific implementation of {@see List}.
      */
     protected abstract List createList();
     /**
@@ -29,44 +34,36 @@ public abstract class TestList {
     public void tearDown() {    
         list = null;
     }
-    /**
-     * 
-     */
+
 	@Test
     public void testEmptyListIsEmpty() {
         assertTrue(list.isEmpty());
     }
-    /**
-     * 
-     */
+
     @Test
     public void testHamcrestWorks() {
         assertThat("Stringy", is(equalTo("Stringy")));
     }
-    /**
-     * 
-     */
+    
     @Test
     public void testRemoveOnEmptyList() {
         assertEquals(list.remove(0).getError(), ErrorMessage.EMPTY_STRUCTURE);
     }
+    
     @Test
     public void testCompareListWithStackPopOneElement() {
         list.add("String1");
         StackImpl stack = new StackImpl(list);
         assertThat(list.get(0).getReturnValue(), sameInstance(stack.pop().getReturnValue()));
     }
-    /**
-     * 
-     */
+
     @Test
     public void fiveAddsGetFirst() {
         fiveAdds();
         assertEquals(list.get(0).getReturnValue(), "StringAtIndex0");
     }
-    /**
-     *
-     */
+    
+    @Test
     public void fiveAdds() {
         list.add("StringAtIndex0");
         list.add(2);
@@ -74,6 +71,7 @@ public abstract class TestList {
         list.add("Four");
         list.add(true);
     }
+    
     @Test
     public void testSizeAfterRemovingAllElements() {
         list.add(33);
@@ -81,9 +79,7 @@ public abstract class TestList {
         list.remove(0);
         assertEquals(list.get(0).getReturnValue(), 1);
     }
-    /**
-     * 
-     */
+
 
     
     

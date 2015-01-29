@@ -5,7 +5,7 @@ import src.main.*;
 
 import static org.junit.Assert.*;
 /**
- * JUnit test for {@see ReturnObjectImpl}.
+ * JUnit tests for {@see ReturnObjectImpl} class.
  *
  * @author federico bartolomei (bbk-pij-2014-21)
  */
