@@ -1,5 +1,3 @@
-package src.test;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,6 +30,14 @@ public class ReturnObjectImplTest {
         empty = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
         bounds = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
         validNull = new ReturnObjectImpl(emptyInt);
+    }
+    @After
+    public void tearDown() {
+        validString = null;
+        valid = null;
+        empty = null;
+        bounds = null;
+        validNull = null;
     }
     /**
      * Test hasError() on a ReturnObjectImpl carrying a valid String object.

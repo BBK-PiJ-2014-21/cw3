@@ -21,12 +21,9 @@ public abstract class TestList {
     /**
      * 
      */
-    protected abstract FunctionalList createFunkList();
-    
     @Before
     public void setUp() {
         list = createList();
-        funkList = createFunkList();
     }
     @After
     public void tearDown() {    
@@ -50,8 +47,8 @@ public abstract class TestList {
      * 
      */
     @Test
-    public void compareRemoveOnTwoImpl() {
-        assertEquals(list.remove(-1).getError(), ErrorMessage.INDEX_OUT_OF_BOUNDS);
+    public void testRemoveOnEmptyList() {
+        assertEquals(list.remove(0).getError(), ErrorMessage.EMPTY_STRUCTURE);
     }
     @Test
     public void testCompareListWithStackPopOneElement() {
@@ -77,6 +74,12 @@ public abstract class TestList {
         list.add("Four");
         list.add(true);
     }
+    /**
+     * 
+     */
+
+    
+    
     
     /*
     

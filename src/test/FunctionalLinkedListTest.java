@@ -2,21 +2,12 @@ import src.main.FunctionalLinkedList;
 /**
  *
  */
-public class FunctionalLinkedListTest extends TestList {
+public class FunctionalLinkedListTest extends TestFunctionalList {
     /**
-     *
      *
      * @return
      */
-    @Override
     protected FunctionalLinkedList createList() {
-        return new FunctionalLinkedList();
-    }
-    /**
-     *
-     * @return
-     */
-    protected FunctionalLinkedList createFunkList() {
         return new FunctionalLinkedList();
     }
 

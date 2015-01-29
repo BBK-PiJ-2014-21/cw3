@@ -2,7 +2,7 @@ import src.main.FunctionalArrayList;
 /**
  * 
  */
-public class FunctionalArrayListTest extends TestList {
+public class FunctionalArrayListTest extends TestFunctionalList {
     /**
      *
      *  
@@ -10,13 +10,6 @@ public class FunctionalArrayListTest extends TestList {
      */
     @Override
     protected FunctionalArrayList createList() {
-        return new FunctionalArrayList();
-    }
-    /**
-     * 
-     * @return
-     */
-    protected FunctionalArrayList createFunkList() {
         return new FunctionalArrayList();
     }
 
