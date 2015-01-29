@@ -1,7 +1,7 @@
 package src.main;
 
 /**
- * Implementation of interface {@see ReturnObject} 
+ * Implementation of the ReturnObject interface.
  * 
  * @author fbarto01 (bbk-pij-2014-21) 
  */
@@ -11,21 +11,25 @@ public class ReturnObjectImpl implements ReturnObject {
 	/**
 	 * Constructor for either an invalid operations or a valid operation with an empty Object to return.
      *
-	 * @param message the {@see ErrorMessage} wrapping the Object returned (which with this constructor always null).
+	 * @param message the {@see ErrorMessage} wrapping the Object returned (always null with this constructor).
 	 */
 	public ReturnObjectImpl(ErrorMessage message) {
 		this.value = null;
 		this.message = message;
 	}
 	/**
-	 * Constructor for valid operations
+	 * Constructor for valid operations.
+     * 
 	 * @param value the Object returned.
 	 */
 	public ReturnObjectImpl(Object value) {
-		this.value = value;
-		this.message = ErrorMessage.NO_ERROR;
-	}
-    
+        this.value = value;
+        this.message = ErrorMessage.NO_ERROR;
+    }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public boolean hasError() {
 		if(message==ErrorMessage.NO_ERROR) {
 			return false;
@@ -33,11 +37,17 @@ public class ReturnObjectImpl implements ReturnObject {
 			return true;
 		}
 	}
-	
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public ErrorMessage getError() {
 		return message;
 	}
-
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public Object getReturnValue() {
 		return value;
 	}

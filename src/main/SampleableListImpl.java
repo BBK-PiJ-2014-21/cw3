@@ -1,8 +1,8 @@
 package src.main;
 
 /**
- * Implementation of interface {@see SampleableList}
- * All the methods from interface {@list} are overridden,
+ * Implementation of the SampleableList interface.
+ * All the methods from interface {@see List} are overridden,
  * using the implementations of the underlying list provided
  * with the constructor. 
  *
@@ -19,7 +19,10 @@ public class SampleableListImpl implements SampleableList {
 	public SampleableListImpl(List list) {
 		this.list = list;
 	}
-	
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public SampleableList sample() {
 		SampleableList s = new SampleableListImpl(list);
 		for(int i=1; i<s.size(); i++) {
@@ -28,6 +31,8 @@ public class SampleableListImpl implements SampleableList {
 		return s;
 	}
     /**
+     * {@inheritDoc}
+     *  
      * Method from interface {@see List} calls the implementation
      * provided by the list set up with the constructor
      */
@@ -36,6 +41,8 @@ public class SampleableListImpl implements SampleableList {
 		return list.isEmpty();
 	}
     /**
+     * {@inheritDoc}
+     *  
      * Method from interface {@see List} calls the implementation
      * provided by the list set up with the constructor
      */
@@ -44,6 +51,8 @@ public class SampleableListImpl implements SampleableList {
 		return list.size();
 	}
     /**
+     * {@inheritDoc}
+     *  
      * Method from interface {@see List} calls the implementation
      * provided by the list set up with the constructor
      */
@@ -52,6 +61,8 @@ public class SampleableListImpl implements SampleableList {
 		return list.get(index);
 	}
     /**
+     * {@inheritDoc}
+     *  
      * Method from interface {@see List} calls the implementation
      * provided by the list set up with the constructor
      */
@@ -60,6 +71,8 @@ public class SampleableListImpl implements SampleableList {
 		return list.remove(index);
 	}
     /**
+     * {@inheritDoc}
+     *  
      * Method from interface {@see List} calls the implementation
      * provided by the list set up with the constructor
      */
@@ -68,12 +81,14 @@ public class SampleableListImpl implements SampleableList {
 		return list.add(index, item);
 	}
     /**
+     * {@inheritDoc}
+     *
      * Method from interface {@see List} calls the implementation
      * provided by the list set up with the constructor
      */
-	@Override
-	public ReturnObject add(Object item) {
-		return list.add(item);
-	}
+    @Override
+    public ReturnObject add(Object item) {
+        return list.add(item);
+    }
 	
 }

@@ -1,14 +1,14 @@
 package src.main;
+
 /**
- * Implementation of interface {@see Stack}.
+ * Implementation of the Stack interface using AbstractStack as superclass.
  *
- * @author Federico Bartolomei (bbk-pij-2014-21)  
+ * @author federico bartolomei (bbk-pij-2014-21)
  */
 public class StackImpl extends AbstractStack {
     /**
      * Creates a new stack: this constructor does not check whether the provided list
-     * is null. If a null list is provided, a NullPointerException will be thrown at runtime
-     * as soon as any operation is attempted on the underlying list {@see AbstractStack}.
+     * is null.
      *  
      * @param list the internal data structure of the stack, passed to the superclass
      * and assigned to the protected field internalList.
@@ -17,34 +17,39 @@ public class StackImpl extends AbstractStack {
         super(list);
     }
     /**
-     * Calls the isEmpty() method belonging to the implementation of {@see List} 
-     * created with the constructor and assigned to the field internalList. 
+     * {@inheritDoc} 
      * 
-     * @return true if the stack is empty, false otherwise.
+     * Calls the isEmpty() method belonging to the implementation of {@see List} 
+     * created with the constructor and assigned to the field internalList.
      */
+    @Override
     public boolean isEmpty() {
         return internalList.isEmpty();
     }
     /**
+     * {@inheritDoc}
+     * 
      * Calls the size() method belonging to the implementation of {@see List} 
      * created with the constructor and assigned to the field internalList.
-     *  
-     * @return the size of the stack.
      */
+    @Override
     public int size() {
         return internalList.size();
     }
     /**
+     * {@inheritDoc}
+     *  
      * The top of the stack is the end of internalList.
      * The method add(item) of the {@see List} implementation 
      * should already provide coverage for an attempt to add a null item to the stack.
-     * 
-     * @param item the new item to be pushed at the top of the stack.
      */
+    @Override
     public void push(Object item) {
         internalList.add(item);
     }
     /**
+     * {@inheritDoc}
+     *  
      * The method get(index) of the {@see List} implementation
      * should already provide coverage for an attempt to access 
      * to a list with no elements or to an index out of bounds.
@@ -52,10 +57,13 @@ public class StackImpl extends AbstractStack {
      * @return either the item peeked at the top of the stack or a {@see ErrorMessage}
      * wrapped in a {@see ReturnObjectImpl}
      */
+    @Override
     public ReturnObject top() {
         return internalList.get(internalList.size()-1);
     }
     /**
+     * {@inheritDoc} 
+     * 
      * The method remove(index) of the {@see List} implementation 
      * should already provide coverage for an attempt to access
      * to an index out of bounds.
@@ -63,8 +71,9 @@ public class StackImpl extends AbstractStack {
      * @return either the item popped out from the top of the stack or a {@see ErrorMessage}
      * wrapped in a {@see ReturnObjectImpl}
      */
+    @Override
     public ReturnObject pop() {
         return internalList.remove(internalList.size()-1);
     }
-    
+
 }
