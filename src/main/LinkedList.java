@@ -1,8 +1,8 @@
 package src.main;
 
 /**
- * Implementation of interface {@see List} as a singly linked-list of Objects,
- * using class {@see Node} as field;
+ * Implementation of the List interface as a singly linked-list of Objects,
+ * using class {@see Node} as field.
  *
  * @author federico bartolomei (bbk-pij-2014-21)
  */
@@ -14,7 +14,10 @@ public class LinkedList implements List {
 		head = null;
 		size = 0;
 	}
-	
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public boolean isEmpty() {
 		if(head==null) {
 			return true;
@@ -22,11 +25,17 @@ public class LinkedList implements List {
 			return false;
 		}
 	}
-	
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public int size() {
 		return size;
 	}
-
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public ReturnObject get(int index) {
 		if(isEmpty()) {
 			ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
@@ -43,7 +52,10 @@ public class LinkedList implements List {
 			return wrap;	
 		}
 	}
-	
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public ReturnObject remove(int index) {
 		ReturnObject wrap = get(index);
 		if(!wrap.hasError()) {
@@ -65,7 +77,10 @@ public class LinkedList implements List {
 		}
 		return wrap;
 	}
-	
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public ReturnObject add(int index, Object item) {
 		if(item==null) {
 			ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
@@ -91,7 +106,10 @@ public class LinkedList implements List {
 			return wrap;	
 		}					
 	}
-	
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public ReturnObject add(Object item) {
 		if(item==null) {
 			ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);

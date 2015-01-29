@@ -1,7 +1,7 @@
 package src.main;
 
 /**
- * Implementation of interface {@see List} as an array of Objects;
+ * Implementation of the List interface as an array of Objects.
  *
  * @author federico bartolomei (bbk-pij-2014-21)
  */
@@ -9,24 +9,28 @@ public class ArrayList implements List {
 	private Object[] list;
 	private int size;
     /**
-     * Initial capacity can be specified (will be expanded later if needed);
-     * field size keeps track of... TODO check Arrays<E> Oracle documentation for Javadoc hints*
+     * Initial capacity can be specified as a parameter with this constructor: should be used
+     * before adding a large number of elements in order to reduce the amount of incremental reallocation;
+     * size is the list size: capacity will always be larger than size at least by 1.
      * 
-     * @param capacity the initial capacity of the array  
+     * @param capacity the initial capacity of the array used to store the elements in the list.
      */
     public ArrayList(int capacity) {
         list = new Object[capacity];
         size = 0;
     }
     /**
-	 * Initial capacity is set at 10 unless specified using the former constructor; 
-     * (it is expanded with method expandArray() if needed);
+	 * Initial capacity is set at 8 unless specified using the former constructor
+     * (it is expanded automatically with method expandArray() when needed).
  	 */
 	public ArrayList() {
-		list = new Object[10];
+		list = new Object[8];
 		size = 0;
 	}
-	
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public boolean isEmpty() {
 		if(size()==0) {
 			return true;
@@ -34,12 +38,16 @@ public class ArrayList implements List {
 			return false;
 		}
 	}
-	
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public int size() {
 		return size;
 	}
 	/**
-	 * This method checks if the array is almost full;
+	 * This method checks if the array is almost full.
+     *
 	 * @return true if there is only one empty space in the array
 	 * (and therefore needs to be expanded), false otherwise. 
 	 */
@@ -61,7 +69,10 @@ public class ArrayList implements List {
 			list[i] = temp[i];
 		}
 	}
-
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public ReturnObject get(int index) {
 		if(isEmpty()) {
 			ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
@@ -74,7 +85,10 @@ public class ArrayList implements List {
 			return wrap;
 		}
 	}
-	
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public ReturnObject remove(int index) {
 		ReturnObject wrap = get(index);
 		if(!wrap.hasError()) {
@@ -89,7 +103,10 @@ public class ArrayList implements List {
 		}
 		return wrap;
 	}
-	
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public ReturnObject add(int index, Object item) {
 		if(item==null) {
 			ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
@@ -112,7 +129,10 @@ public class ArrayList implements List {
 			}
 		}
 	}
-	
+    /**
+     * {@inheritDoc}
+     */
+    @Override
 	public ReturnObject add(Object item) {
 		if(item==null) {
 			ReturnObject wrap = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
