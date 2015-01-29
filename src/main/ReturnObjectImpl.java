@@ -10,7 +10,7 @@ public class ReturnObjectImpl implements ReturnObject {
 	private ErrorMessage message;
 	/**
 	 * Constructor for either an invalid operations or a valid operation with an empty Object to return.
-     *
+     	 *
 	 * @param message the {@see ErrorMessage} wrapping the Object returned (always null with this constructor).
 	 */
 	public ReturnObjectImpl(ErrorMessage message) {
@@ -19,7 +19,7 @@ public class ReturnObjectImpl implements ReturnObject {
 	}
 	/**
 	 * Constructor for valid operations.
-     * 
+         * 
 	 * @param value the Object returned.
 	 */
 	public ReturnObjectImpl(Object value) {
