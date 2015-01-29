@@ -3,7 +3,7 @@ package src.main;
 /**
  * Implementation of the ReturnObject interface.
  * 
- * @author fbarto01 (bbk-pij-2014-21) 
+ * @author federico bartolomei (bbk-pij-2014-21)
  */
 public class ReturnObjectImpl implements ReturnObject {
 	private Object value;
