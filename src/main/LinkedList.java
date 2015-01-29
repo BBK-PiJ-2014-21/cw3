@@ -59,7 +59,6 @@ public class LinkedList implements List {
 	public ReturnObject remove(int index) {
 		ReturnObject wrap = get(index);
 		if(!wrap.hasError()) {
-			size--;
 			if(index==0) {
 				if(size()==1) {
 					head = null;
@@ -74,6 +73,7 @@ public class LinkedList implements List {
 				}
 				nodeBeforeIndex.setNext(nodeBeforeIndex.getNext().getNext());
 			}
+            size--;
 		}
 		return wrap;
 	}
