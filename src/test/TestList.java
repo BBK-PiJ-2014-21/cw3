@@ -74,6 +74,13 @@ public abstract class TestList {
         list.add("Four");
         list.add(true);
     }
+    @Test
+    public void testSizeAfterRemovingAllElements() {
+        list.add(33);
+        list.add(1);
+        list.remove(0);
+        assertEquals(list.get(0).getReturnValue(), 1);
+    }
     /**
      * 
      */
