@@ -12,6 +12,7 @@ public class ImprovedStackImpl implements ImprovedStack {
     /**
      * The constructor take an implementation of interface {@see List} as a parameter
      * passing it down to initialize the field stack.
+     * This implementation does not check whether the provided list is null.
      * 
      * @param list the data structure behind the stack.
      */
@@ -40,7 +41,7 @@ public class ImprovedStackImpl implements ImprovedStack {
     public ImprovedStack reverse() {
         List copy = new LinkedList();
         if(!stack.isEmpty()) {
-            for(int i = stack.internalList.size() - 1; i >= 0; i--) {
+            for(int i=stack.internalList.size()-1; i>=0; i--) {
                 copy.add(stack.internalList.get(i).getReturnValue());
             }
         }
@@ -49,9 +50,19 @@ public class ImprovedStackImpl implements ImprovedStack {
     }
     /**
      * {@inheritDoc}
+     * 
+     * This method calls the methods implemented for the underlying data structure {@see List}
+     * which already do their own internal checking and resizing.
+     *
      */
     @Override
     public void remove(Object object) {
+        for(int i=0; i<stack.internalList.size(); i++) {
+            if(stack.internalList.get(i).getReturnValue().equals(object)) {
+                stack.internalList.remove(i);
+                i--;
+            }
+        }
     }
     /**
      * {@inheritDoc}
