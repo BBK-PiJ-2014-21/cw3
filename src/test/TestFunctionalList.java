@@ -8,8 +8,8 @@ import static org.junit.Assert.*;
 /**
  * Abstract class to test with JUnit the implementations of the interface {@see FunctionalList}.
  * All the extended methods of that interface are tested here. These implementations can also run 
- * the test of the superclass {@see TestList} which verify the inherited methods of {@see List}.
- * 
+ * the tests in the superclass {@see TestList} regarding the inherited methods of {@see List}.
+ *
  * @author federico bartolomei (bbk-pij-2014-21) 
  */
 public abstract class TestFunctionalList extends TestList {

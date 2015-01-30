@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
  * Abstract class to test with JUnit the various implementations of interface {@see List}.
  * All the methods of the interface are tested here, and the classes implementing it 
  * should extend either this or the other test subclass {@see TestFunctionalList} 
- * if they are implementations of that interface, in which case they will be tested in both classes.
+ * if they are implementations of that interface, in which case they can be tested in both classes.
  * 
  * @author federico bartolomei (bbk-pij-2014-21) 
  */

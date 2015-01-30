@@ -1,6 +1,7 @@
 import src.main.ArrayList;
 /**
- * Class for launching the implementation {@see ArrayList} to JUnit testing class {@see TestList}.
+ * Class for launching the Junit test for implementation {@see ArrayList} 
+ * through the testing abstract class {@see TestList}.
  */
 public class ArrayListTest extends TestList {
     /**

@@ -1,8 +1,8 @@
 import src.main.FunctionalLinkedList;
 
 /**
- * Class for launching the implementation {@see FunctionalLinkedList}
- * to JUnit testing classes {@see TestList} and {@see TestFunctionalList}.
+ * Class for launching the Junit test for implementation {@see FunctionalLinkedList}
+ * through the testing abstract classes {@see TestList} and {@see TestFunctionalList}.
  */
 public class FunctionalLinkedListTest extends TestFunctionalList {
     /**

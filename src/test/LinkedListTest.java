@@ -1,7 +1,8 @@
 import src.main.LinkedList;
 
 /**
- * Class for launching the implementation {@see LinkedList} to JUnit class {@see TestList}.
+ * Class for launching the Junit test for implementation {@see LinkedList}
+ * through the testing abstract class {@see TestList}.
  * 
  * @author federico bartolomei (bbk-pij-2014-21)
  */

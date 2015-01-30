@@ -1,8 +1,8 @@
 import src.main.FunctionalArrayList;
 
 /**
- * Class for launching the implementation {@see FunctionalArrayList} 
- * to JUnit testing classes {@see TestList} and {@see TestFunctionalList}.
+ * Class for launching the Junit test for implementation {@see FunctionalArrayList}
+ * through the testing abstract classes {@see TestList} and {@see TestFunctionalList}.
  * 
  * @author federico bartolomei (bbk-pij-2014-21)
  */
