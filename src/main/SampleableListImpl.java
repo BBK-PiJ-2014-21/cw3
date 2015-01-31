@@ -11,19 +11,35 @@ package src.main;
 public class SampleableListImpl implements SampleableList {
 	private List list;
     /**
-     * Create a new SampleableListImpl with the provided list
-     * as the underlying data structure. 
-     * This constructor does not check whether the provided list
-     * is null: if a null list is provided, a NullPointerException 
-     * will be thrown at runtime as soon as any operation is attempted on the underlying list.
+     * Create a new SampleableListImpl with a {@see ArrayList} as internal data structure filled with 
+     * a copy of the elements of the provided list (the original list is not affected by changes on the new list).
+     * This constructor does not check whether the provided list is null: if a null list is provided, 
+     * a NullPointerException will be thrown at runtime as soon as any operation is attempted on the underlying list.
      * 
      * @param list the list underlying this implementation
      */
 	public SampleableListImpl(List list) {
-		this.list = list;
+		ArrayList internal = new ArrayList();
+        for(int i=0; i<list.size(); i++) {
+            internal.add(list.get(i).getReturnValue());
+        }
+        this.list = internal;
 	}
     /**
+     * An empty SampleableListImpl can be created with this constructor which takes no parameters:
+     * the internal data structure will be an empty {@see LinkedList}.
+     *
+     */
+    public SampleableListImpl() {
+        LinkedList internal = new LinkedList();
+        this.list = internal;
+    }
+    /**
      * {@inheritDoc}
+     *
+     * @return a SampleableList containing the first (at index 0), third, fifth... element,
+     * or empty if the caller List is empty. The internal data structure of the new List
+     * will be the same implementation used in the caller class.
      */
     @Override
 	public SampleableList sample() {
