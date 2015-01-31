@@ -37,9 +37,10 @@ public class SampleableListImpl implements SampleableList {
     /**
      * {@inheritDoc}
      *
-     * @return a SampleableList containing the first (at index 0), third, fifth... element,
+     * @return a SampleableList containing a copy of the first (at index 0), third, fifth... element,
      * or empty if the caller List is empty. The internal data structure of the new List
-     * will be the same implementation used in the caller class.
+     * will be the same implementation used in the caller class (i.e. a new ArrayList with a copy
+     * of the elements - see the first constructor above for further details).
      */
     @Override
 	public SampleableList sample() {
