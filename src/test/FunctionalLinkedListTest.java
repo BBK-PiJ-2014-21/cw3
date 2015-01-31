@@ -3,6 +3,8 @@ import src.main.FunctionalLinkedList;
 /**
  * Class for launching the Junit test for implementation {@see FunctionalLinkedList}
  * through the testing abstract classes {@see TestList} and {@see TestFunctionalList}.
+ * 
+ * @author federico bartolomei (bbk-pij-2014-21)
  */
 public class FunctionalLinkedListTest extends TestFunctionalList {
     /**

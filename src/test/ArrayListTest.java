@@ -2,6 +2,8 @@ import src.main.ArrayList;
 /**
  * Class for launching the Junit test for implementation {@see ArrayList} 
  * through the testing abstract class {@see TestList}.
+ * 
+ * @author federico bartolomei (bbk-pij-2014-21)
  */
 public class ArrayListTest extends TestList {
     /**

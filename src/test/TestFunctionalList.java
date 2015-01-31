@@ -37,4 +37,53 @@ public abstract class TestFunctionalList extends TestList {
         assertNull(list.head().getReturnValue());
     }
     
+    @Test
+    public void testRestOnEmptyList() {
+        assertEquals(list.rest().get(0).getError(), ErrorMessage.EMPTY_STRUCTURE);
+    }
+    
+    @Test
+    public void testHeadOnOneElementList() {
+        list.add(1);
+        assertEquals("Should return 1", list.head().getReturnValue(), 1);
+    }
+    
+    @Test
+    public void testRestOnOneElementList() {
+        list.add(1);
+        List funky = list.rest();
+        assertEquals("Size should be 0", funky.size(), 0);
+    }
+    
+    @Test
+    public void testChangesOnHeadShouldNotAffectOriginal() {
+        list.add(1);
+        list.add(2);
+        FunctionalList funky = new FunctionalArrayList();
+        funky.add(list.head());
+        funky.remove(0);
+        assertEquals("Should return 1", list.get(0).getReturnValue(), 1);
+    }
+    
+    @Test
+    public void testChangesOnRestShouldNotAffectOriginal() {
+        list.add(1);
+        list.add("String2");
+        list.add(333);
+        List funky = list.rest();
+        funky.remove(0);
+        funky.remove(0);
+        assertEquals("Size should be 3", list.size(), 3);
+    }
+    
+    @Test
+    public void testRestOfRest() {
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        FunctionalList rest1 = list.rest();
+        FunctionalList rest2 = rest1.rest();
+        assertEquals("Size should be 1", rest2.size(), 1);
+    }
+    
 }
