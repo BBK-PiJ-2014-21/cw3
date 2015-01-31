@@ -22,7 +22,7 @@ public class TestStack {
         toReturn.add("StringAtIndex0");
         toReturn.add(1);
         toReturn.add(3.33);
-        toReturn.add(false);
+        toReturn.add("OrginalTop");
         return toReturn;
     }
     
@@ -38,6 +38,18 @@ public class TestStack {
         ArrayList empty = new ArrayList();
         Stack stack = new StackImpl(empty);
         assertEquals("Should return an EMPTY_STRUCTURE ReturnObject", stack.top().getError(), ErrorMessage.EMPTY_STRUCTURE);
+    }
+    
+    @Test
+    public void testPopMoreThanAllElementsCheckSize() {
+        StackImpl stoker = new StackImpl(createLinkedList());
+        stoker.pop();
+        stoker.pop();
+        stoker.pop();
+        stoker.pop();
+        stoker.pop();
+        stoker.pop();
+        assertEquals("Size should be 0", stoker.size(), 0);
     }
     
     @Test
@@ -60,11 +72,14 @@ public class TestStack {
         ImprovedStack original = new ImprovedStackImpl(createLinkedList());
         ImprovedStack reversed = original.reverse();
         reversed.pop();
-        assertNotEquals(original.top().getReturnValue(), reversed.top().getReturnValue());
+        reversed.pop();
+        reversed.pop();
+        reversed.pop();
+        assertEquals(original.top().getReturnValue(), "OriginalTop");
     }
 
     @Test
-    public void testRemoveTwoElementssNextToEachOther() {
+    public void testRemoveTwoElementsNextToEachOther() {
         LinkedList link = new LinkedList();
         link.add(33);
         link.add(33);
