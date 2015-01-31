@@ -12,7 +12,10 @@ public class SampleableListImpl implements SampleableList {
 	private List list;
     /**
      * Create a new SampleableListImpl with the provided list
-     * as the underlying data structure.
+     * as the underlying data structure. 
+     * This constructor does not check whether the provided list
+     * is null: if a null list is provided, a NullPointerException 
+     * will be thrown at runtime as soon as any operation is attempted on the underlying list.
      * 
      * @param list the list underlying this implementation
      */
