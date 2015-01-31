@@ -8,7 +8,9 @@ package src.main;
 public class StackImpl extends AbstractStack {
     /**
      * Creates a new stack: this constructor does not check whether the provided list
-     * is null.
+     * is null. Please note also that changes done on the newly create Stack will affect the
+     * original List provided as internal data structure, too, as it is referenced directly
+     * to the superclass.
      *  
      * @param list the internal data structure of the stack, passed to the superclass
      * and assigned to the protected field internalList.

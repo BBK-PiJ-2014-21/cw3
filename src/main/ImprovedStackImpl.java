@@ -13,6 +13,8 @@ public class ImprovedStackImpl implements ImprovedStack {
      * The constructor take an implementation of interface {@see List} as a parameter
      * passing it down to initialize the field stack.
      * This implementation does not check whether the provided list is null.
+     * Please note also that changes on this ImprovedStackImpl will affect the original List provided with 
+     * this constructor.
      * 
      * @param list the data structure behind the stack.
      */
@@ -35,7 +37,8 @@ public class ImprovedStackImpl implements ImprovedStack {
      * into a {@see LinkedListImpl}.
      *
      * @return a new ImprovedStack with a LinkedList as internal data structure, either empty
-     * (if the original ImprovedStack was empty) or with its elements on reverse order.
+     * (if the original ImprovedStack was empty) or with a copy of its elements on reverse order.
+     * Changes made on this newly created ImprovedStackImpl will not affect the original stack.
      */
     @Override
     public ImprovedStack reverse() {

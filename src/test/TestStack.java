@@ -1,50 +1,68 @@
+import org.junit.Test;
 import src.main.*;
 
-import org.hamcrest.Matchers;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 /**
  * JUnit tests for {@see StackImpl} and {@see ImprovedStackImpl} implementations.
+ * The implementation of most methods are calling the methods of the stack's internal data structure,
+ * which is already tested successfully in the more extensive {@see TestList}.
  *
  * @author federico bartolomei (bbk-pij-2014-21) 
  */
 public class TestStack {
-    private LinkedList list;
-    private SampleableListImpl sample;
-    private FunctionalArrayList funky;
-    private StackImpl stack;
-    private ImprovedStack improvedStack;
     /**
-     * TODO Set up instances for the tests...
+     * Method which creates a new LinkedList with four elements in it, to be used in various tests and avoid
+     * code repetition.
+     * 
+     * @return a {@see LinkedList} with four elements in it. 
      */
-    @Before
-    public void setUp() {
-        
+    public LinkedList createLinkedList() {
+        LinkedList toReturn = new LinkedList();
+        toReturn.add("StringAtIndex0");
+        toReturn.add(1);
+        toReturn.add(3.33);
+        toReturn.add(false);
+        return toReturn;
     }
+    
     @Test
     public void testEmptyStackIsEmpty() {
+        ArrayList empty = new ArrayList();
+        Stack stack = new StackImpl(empty);
         assertTrue(stack.isEmpty());
     }
     
-// TESTS FOR IMPROVEDSTACK() -----------------------------
-//TODO different kind of tests when creating different List with stack?
-// AND TODO double check internalList of original stack is not affected by reverse() method of copied stack
     @Test
-    public void testReversedStackDoesNotAffectOriginal() {
-        LinkedList link = new LinkedList();
-        link.add(1);
-        link.add("Stringy");
-        link.add("INDEX2");
-        ImprovedStack stack = new ImprovedStackImpl(link);
-        ImprovedStack stacky = stack.reverse();
-        stacky.pop();
-        assertEquals(stack.top().getReturnValue(), "INDEX2");
-        assertEquals(stacky.top().getReturnValue(), "Stringy");
+    public void testEmptyStackTop() {
+        ArrayList empty = new ArrayList();
+        Stack stack = new StackImpl(empty);
+        assertEquals("Should return an EMPTY_STRUCTURE ReturnObject", stack.top().getError(), ErrorMessage.EMPTY_STRUCTURE);
     }
+    
+    @Test
+    public void testOriginalListIsAffectedFromChangesToStack() {
+        LinkedList original = createLinkedList();
+        Stack newStack = new StackImpl(original);
+        newStack.pop();
+        assertEquals("Should be null, as original is affected by the pop() call", original.get(2).getReturnValue(), null);
+    }
+    
+    @Test
+    public void testReversedCompareLastObjects() {
+        ImprovedStack stacky = new ImprovedStackImpl(createLinkedList());
+        ImprovedStack reversed = stacky.reverse();
+        assertEquals("Should top() \"StringAtIndex0\"", reversed.top().getReturnValue(), "StringAtIndex0");
+    }
+    
+    @Test
+    public void testOriginalStackIsNotAffectedFromReverseMethod() {
+        ImprovedStack original = new ImprovedStackImpl(createLinkedList());
+        ImprovedStack reversed = original.reverse();
+        reversed.pop();
+        assertNotEquals(original.top().getReturnValue(), reversed.top().getReturnValue());
+    }
+
     @Test
     public void testRemoveTwoElementssNextToEachOther() {
         LinkedList link = new LinkedList();
