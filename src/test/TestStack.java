@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 /**
  * JUnit tests for {@see StackImpl} and {@see ImprovedStackImpl} implementations.
- * The implementation of most methods are calling the methods of the stack's internal data structure,
+ * The implementations of most methods are calling the methods of the stack's internal data structure,
  * which is already tested successfully in the more extensive {@see TestList}.
  *
  * @author federico bartolomei (bbk-pij-2014-21) 
