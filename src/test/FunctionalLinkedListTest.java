@@ -12,6 +12,7 @@ public class FunctionalLinkedListTest extends TestFunctionalList {
      * 
      * @return the FunctionalLinkedList to be passed on to TestList for tests against the interface {@see List}.
      */
+    @Override
     protected FunctionalLinkedList createList() {
         return new FunctionalLinkedList();
     }
@@ -21,10 +22,9 @@ public class FunctionalLinkedListTest extends TestFunctionalList {
      * @return the FunctionalLinkedList to be passed on to TestFunctionalList
      * for tests against the interface {@see FunctionalList}.
      */
+    @Override
     protected FunctionalLinkedList createFunkList() {
         return new FunctionalLinkedList();
     }
 
 }
-
-//TODO add tests! see FunctionalArrayListTest

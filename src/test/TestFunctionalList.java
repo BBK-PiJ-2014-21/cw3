@@ -31,7 +31,16 @@ public abstract class TestFunctionalList extends TestList {
     public void tearDown() {
         list = null;
     }
-
+    /**
+     * Method to use in various tests in order to avoid code repetition.
+     * Add three elements to the list.
+     */
+    public void addThreeElements() {
+        list.add("StringAtIndex0");
+        list.add(1);
+        list.add(false);
+    }
+    
     @Test
     public void testHeadOnEmptyList() {
         assertNull(list.head().getReturnValue());
@@ -49,10 +58,35 @@ public abstract class TestFunctionalList extends TestList {
     }
     
     @Test
-    public void testRestOnOneElementList() {
+    public void testRestOnOneElementListSize() {
         list.add(1);
         List funky = list.rest();
         assertEquals("Size should be 0", funky.size(), 0);
+    }
+    
+    @Test
+    public void testHeadOnThreeElementsList() {
+        addThreeElements();
+        assertEquals("Should return \"StringAtIndex0\"", list.head().getReturnValue(), "StringAtIndex0");
+    }
+    
+    @Test
+    public void testRestOnThreeElementsListHead() {
+        addThreeElements();
+        assertEquals("Should return 1", list.rest().get(0), 1);
+    }
+    
+    @Test
+    public void testRestOnThreeElementsListSize() {
+        addThreeElements();
+        assertEquals("Should return 2", list.rest().size(), 2);
+    }
+    
+    @Test
+    public void testRestOnOneElementListError() {
+        list.add(1);
+        List funky = list.rest();
+        assertEquals("should return EMPTY_STRUCTURE", funky.get(0).getError(), ErrorMessage.EMPTY_STRUCTURE);
     }
     
     @Test
