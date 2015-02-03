@@ -13,8 +13,6 @@ import static org.junit.Assert.*;
  * All the methods of the interface are tested here, and the classes implementing it 
  * should extend either this or the other test subclass {@see TestFunctionalList} 
  * if they are implementations of that interface, in which case they can be tested in both classes.
- * Some tests methods towards the end of this class use Hamcrest to make comparisons with instances 
- * of other classes (e.g. with {@see StackImpl} implementations). 
  * 
  * @author federico bartolomei (bbk-pij-2014-21) 
  */

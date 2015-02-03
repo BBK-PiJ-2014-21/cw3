@@ -37,7 +37,7 @@ public class TestStack {
     public void testEmptyStackTop() {
         ArrayList empty = new ArrayList();
         Stack stack = new StackImpl(empty);
-        assertEquals("Should return an EMPTY_STRUCTURE ReturnObject", stack.top().getError(), ErrorMessage.EMPTY_STRUCTURE);
+        assertEquals("Should return EMPTY_STRUCTURE", stack.top().getError(), ErrorMessage.EMPTY_STRUCTURE);
     }
     
     @Test
@@ -100,7 +100,6 @@ public class TestStack {
     }
     @Test
     public void testRemoveNullObject() {
-        String x = null;
         LinkedList link = new LinkedList();
         link.add(33);
         ImprovedStack stacky = new ImprovedStackImpl(link);

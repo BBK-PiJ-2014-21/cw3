@@ -54,7 +54,7 @@ public class StackImpl extends AbstractStack {
      *  
      * The method get(index) of the {@see List} implementation
      * should already provide coverage for an attempt to access 
-     * to a list with no elements or to an index out of bounds.
+     * to a list with no elements.
      *   
      * @return either the item peeked at the top of the stack or a {@see ErrorMessage}
      * wrapped in a {@see ReturnObjectImpl}
@@ -68,7 +68,7 @@ public class StackImpl extends AbstractStack {
      * 
      * The method remove(index) of the {@see List} implementation 
      * should already provide coverage for an attempt to access
-     * to an index out of bounds.
+     * to a list with no elements.
      *  
      * @return either the item popped out from the top of the stack or a {@see ErrorMessage}
      * wrapped in a {@see ReturnObjectImpl}
